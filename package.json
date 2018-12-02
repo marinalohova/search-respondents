@@ -4,8 +4,8 @@
   "description": "Matching respondents with projects by location",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "node index.js"
+    "test": "mocha --harmony",
+    "start": "node --harmony index.js"
   },
   "author": "Marina Lohova",
   "license": "ISC",
