@@ -1,0 +1,22 @@
+{
+  "name": "search-respondents",
+  "version": "1.0.0",
+  "description": "Matching respondents with projects by location",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node index.js"
+  },
+  "author": "Marina Lohova",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^5.2.0",
+    "mock-fs": "^4.7.0"
+  },
+  "dependencies": {
+    "csv-parser": "^2.1.0",
+    "haversine": "^1.1.0"
+  }
+}
