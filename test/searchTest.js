@@ -1,8 +1,8 @@
 const { expect } = require('chai');
-var { byDistance } = require('../features/respondents/search');
+const { byDistance } = require('../features/respondents/search');
 
 describe('search()', () => {
-
+    
     const respondents = [
         {
             firstName: 'John',
@@ -29,11 +29,10 @@ describe('search()', () => {
             }
         }]
     };
-
     
     it('should find respondents within the specified range in kilometers', () => {
         
-        var result = byDistance(respondents, researchProject, 100);
+        let result = byDistance(respondents, researchProject, 100);
 
         expect(result).to.have.length(1);
         expect(result).to.have.deep.nested.property('[0].firstName', 'John');
@@ -48,7 +47,7 @@ describe('search()', () => {
     });
 
     it('should find respondents who live on the edge of the range', () => {
-        var respondents = [
+        let respondents = [
             {
                 firstName: 'John',
                 location: 'Floral Park, NY, USA',
@@ -56,7 +55,7 @@ describe('search()', () => {
                 longitude: -73.7340213
             }];
 
-        var researchProject = {
+        let researchProject = {
             cities: [{
                 location : {
                     city: 'Bellerose, NY, USA',
@@ -68,7 +67,7 @@ describe('search()', () => {
             }]
         };
 
-        var result = byDistance(respondents, researchProject, 1.35, 'km');
+        let result = byDistance(respondents, researchProject, 1.35, 'km');
 
         expect(result).to.have.length(1);
         expect(result).to.have.deep.nested.property('[0].firstName', 'John');
@@ -81,7 +80,7 @@ describe('search()', () => {
 
     it('should sort respondents alphabetically by name', () => {
         
-        var result = byDistance(respondents, researchProject, 4500);
+        let result = byDistance(respondents, researchProject, 4500);
 
         expect(result).to.have.length(2);
         expect(result).to.have.deep.nested.property('[0].firstName', 'Anna');

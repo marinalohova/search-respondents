@@ -1,7 +1,7 @@
 const chai = require('chai');
-expect = chai.expect;
+const expect = chai.expect;
 chai.use(require('chai-as-promised'));
-var { fromCSV } = require('../features/respondents/import');
+const { fromCSV } = require('../features/respondents/import');
 const mock = require('mock-fs');
 
 describe('import()', () => {

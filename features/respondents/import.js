@@ -1,4 +1,5 @@
 "use strict";
+
 const fs = require('fs');
 const csv = require('csv-parser');
 const REQUIRED_HEADERS = ['firstName', 'gender', 'location', 'latitude', 'longitude'];
