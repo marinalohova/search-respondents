@@ -4,7 +4,7 @@ Matching Respondents With Projects by Location
 
 ## Getting Started
 
-The code to import from CSV and search matching respondents can be found in features/respondents.
+Import from CSV / find matching respondents features are in features/respondents. Haversine method implementation is in lib/haversine.js
 
 ### Prerequisites
 
