@@ -17,9 +17,7 @@ describe('search()', () => {
             longitude: -119.17705160000003 }
     ];
 
-    const researchProject = {
-        description: 'Looking for people who drive Prius to discuss their experiences',
-        cities: [{
+    const researchCities = [{
             location : {
                 city: 'New York',
                 location : {
@@ -27,21 +25,20 @@ describe('search()', () => {
                     longitude: -74.0059728
                 }
             }
-        }]
-    };
+        }];
     
     it('should find respondents within the specified range in kilometers', () => {
         
-        let result = byDistance(respondents, researchProject, 100);
+        let result = byDistance(respondents, researchCities, 100);
 
         expect(result).to.have.length(1);
         expect(result).to.have.deep.nested.property('[0].firstName', 'John');
 
-        result = byDistance(respondents, researchProject, 4500);
+        result = byDistance(respondents, researchCities, 4500);
 
         expect(result).to.have.length(2);
 
-        result = byDistance(respondents, researchProject, 10);
+        result = byDistance(respondents, researchCities, 10);
 
         expect(result).to.be.an('array').that.is.empty;
     });
@@ -55,8 +52,7 @@ describe('search()', () => {
                 longitude: -73.7340213
             }];
 
-        let researchProject = {
-            cities: [{
+        let researchCities = [{
                 location : {
                     city: 'Bellerose, NY, USA',
                     location : {
@@ -64,15 +60,14 @@ describe('search()', () => {
                         longitude: -73.7209969
                     }
                 }
-            }]
-        };
+            }];
 
-        let result = byDistance(respondents, researchProject, 1.35, 'km');
+        let result = byDistance(respondents, researchCities, 1.35, 'km');
 
         expect(result).to.have.length(1);
         expect(result).to.have.deep.nested.property('[0].firstName', 'John');
 
-        result = byDistance(respondents, researchProject, 1.34, 'km');
+        result = byDistance(respondents, researchCities, 1.34, 'km');
 
         expect(result).to.have.length(0);
     });
@@ -80,7 +75,7 @@ describe('search()', () => {
 
     it('should sort respondents alphabetically by name', () => {
         
-        let result = byDistance(respondents, researchProject, 4500);
+        let result = byDistance(respondents, researchCities, 4500);
 
         expect(result).to.have.length(2);
         expect(result).to.have.deep.nested.property('[0].firstName', 'Anna');

@@ -1,17 +1,17 @@
 "use strict";
 
-var importRespondents = require('./features/respondents/import');
-var searchRespondents = require('./features/respondents/search');
-var researchProject = require('./project.json');
+const importRespondents = require('./features/respondents/import');
+const searchRespondents = require('./features/respondents/search');
+const researchProject = require('./project.json');
 
-importRespondents.fromCSV('./respondents.csv')
+let respondents = importRespondents.fromCSV('./respondents.csv')
+
     .then(respondents => {
         
-        var results = searchRespondents.byDistance(respondents, researchProject, 100);
-        
-        console.log(results.map(({firstName, location}) => {
-            return { firstName, location }
-        }));
+        var results = searchRespondents.byDistance(respondents, researchProject.cities, 100);
+        results.map(({firstName, location, closestCities}) => {
+            console.log({ firstName, location, closestCities});
+        });
         console.log(`Found ${results.length} matching respondents.`);
     })
     .catch(error => {
