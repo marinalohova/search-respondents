@@ -15,8 +15,7 @@ module.exports = {
  */
 function byDistance(respondents, cities, range) {
     
-    return respondents
-        .reduce((memo, respondent) => {
+    return respondents.reduce((memo, respondent) => {
             
             let closestCities = cities.reduce((memo, {location}) => {
                 let distance = haversine(location.location, respondent);
