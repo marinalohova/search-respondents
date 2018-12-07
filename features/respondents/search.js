@@ -16,8 +16,8 @@ module.exports = {
 function byDistance(respondents, cities, range) {
     
     return respondents
-        .map((respondent) => {
-
+        .reduce((memo, respondent) => {
+            
             let closestCities = cities.reduce((memo, {location}) => {
                 let distance = haversine(location.location, respondent);
                 if (range > distance) {
@@ -27,8 +27,11 @@ function byDistance(respondents, cities, range) {
                 return memo;
             }, []);
             
-            return {...respondent, closestCities };
-        })
-        .filter(respondent => respondent.closestCities.length > 0)
+            if (closestCities.length > 0) {
+                memo.push({ ...respondent, closestCities });
+            }
+            
+            return memo; 
+        },[])
         .sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase());
 }
